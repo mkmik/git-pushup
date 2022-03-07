@@ -75,10 +75,7 @@ func (p *pushup) checkRules(before, after string) error {
 		return err
 	}
 
-	m, err := ignore.CompileIgnoreLines(p.ignoreFiles...)
-	if err != nil {
-		return err
-	}
+	m := ignore.CompileIgnoreLines(p.ignoreFiles...)
 
 	scanner := bufio.NewScanner(bytes.NewReader(n))
 	for scanner.Scan() {

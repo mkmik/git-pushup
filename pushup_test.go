@@ -180,10 +180,7 @@ func TestMatchesPath(t *testing.T) {
 
 	for i, tc := range testCases {
 		t.Run(fmt.Sprint(i), func(t *testing.T) {
-			m, err := ignore.CompileIgnoreLines(tc.i...)
-			if err != nil {
-				t.Fatal(err)
-			}
+			m := ignore.CompileIgnoreLines(tc.i...)
 			if got, want := m.MatchesPath(tc.s), tc.ok; got != want {
 				t.Errorf("got: %v, wanted %v", got, want)
 			}
